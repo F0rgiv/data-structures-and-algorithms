@@ -143,19 +143,19 @@ This function should use forEach to populate your grocery list based on the stor
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
-   //Create initial result
-   const result = []
+  //Create initial result
+  const result = []
 
-   //Check each item to see fi it should be added
-   availableItems.forEach(item => {
-     //only add to list if avaliable
-     if (item['available']) {
+  //Check each item to see fi it should be added
+  availableItems.forEach(item => {
+    //only add to list if avaliable
+    if (item['available']) {
       result.push(item['name'])
-     }
-   })
- 
-   //return result
-   return result
+    }
+  })
+
+  //return result
+  return result
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -173,7 +173,33 @@ Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
-  // Solution code here...
+  //Create initial result
+  const result = []
+
+  //Check each item to see fi it should be added
+  arr.forEach(num => {
+    //if divisable by 3
+    if (num % 3 == 0) {
+      //see if also divisable by 5
+      if (num % 5 == 0) {
+        result.push('Fizz Buzz');
+        return;
+      }
+      //Else it's only divisable by 3
+      result.push('Fizz')
+      return;
+    }
+    //if divisable by 5
+    if (num % 5 == 0) {
+      result.push('Buzz');
+      return;
+    }
+    //else just add the num
+    result.push(num)
+  })
+
+  //return result
+  return result
 };
 
 /* ------------------------------------------------------------------------------------------------
