@@ -73,12 +73,22 @@ Then, write a function named `speaker` that takes in an array of strings and a c
 Use `forEach` to build a new array of strings, each string modified by the callback. Return the new array. 
 ------------------------------------------------------------------------------------------------ */
 
+//capitalize and concat !
 const greeting = (word) => {
-  // Solution code here...
+  return word.toUpperCase().concat('!')
 };
 
 const speaker = (words, callback) => {
-  // Solution code here...
+  //Create initial result
+  const result = []
+
+  //make each word all uppercase and add it to the return array
+  words.forEach(word => {
+    result.push(callback(word))
+  })
+
+  //return result
+  return result
 };
 
 /* ------------------------------------------------------------------------------------------------
