@@ -54,8 +54,13 @@ const allUpperCase = (arr) => {
   //Create initial result
   const result = []
 
-  return result
+  //make each word all uppercase and add it to the return array
+  arr.forEach(word => {
+    result.push(word.toUpperCase())
+  })
+
   //return result
+  return result
 };
 
 /* ------------------------------------------------------------------------------------------------
