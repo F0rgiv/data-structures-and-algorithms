@@ -108,11 +108,20 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-  // Solution code here...
+  arr.push(value)
 };
 
+
 const addNumbers = (num, arr, times, callback) => {
-  // Solution code here...
+  // call the callback only n number of times
+  let i = 0;
+  while (times > i) {
+    callback(arr, num)
+    i++
+  }
+
+  // exit and return the array once you have tereated through the right amount of times
+  return arr
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -134,7 +143,19 @@ This function should use forEach to populate your grocery list based on the stor
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
-  // Solution code here...
+   //Create initial result
+   const result = []
+
+   //Check each item to see fi it should be added
+   availableItems.forEach(item => {
+     //only add to list if avaliable
+     if (item['available']) {
+      result.push(item['name'])
+     }
+   })
+ 
+   //return result
+   return result
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -206,7 +227,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {
