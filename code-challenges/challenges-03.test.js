@@ -149,7 +149,15 @@ Here is an example of the input:
 ------------------------------------------------------------------------------------------------ */
 
 const sortByPrice = (arr) => {
-  // Solution code here...
+  return arr.sort(function (l, r) {
+    if (l.price > r.price) {
+      return 1
+    } else if (l.price < r.price) {
+      return -1
+    } else {
+      return 0
+    }
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -171,7 +179,15 @@ Write a function named sortByLength that takes in an array of strings and return
 ------------------------------------------------------------------------------------------------ */
 
 const sortByLength = (arr) => {
-  // Solution code here...
+  return arr.sort(function (l, r) {
+    if (l.length > r.length) {
+      return 1
+    } else if (l.length < r.length) {
+      return -1
+    } else {
+      return 0
+    }
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -337,7 +353,7 @@ xdescribe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should sort items by their price', () => {
     expect(sortByPrice([
       { name: 'Sweatshirt', price: 45 },
