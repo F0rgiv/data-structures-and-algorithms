@@ -23,7 +23,7 @@ function lower(str) {
 
 const updateAnimal = (arr, callback) => {
   // return arr
-  result = [];
+  let result = [];
 
   // update name
   arr.forEach(name => {
@@ -45,22 +45,26 @@ For example: 'Cat' would come before 'apple'
 const sortNames = (arr) => {
   // Solution code here...
 
-  //perform a buble sort: used: https://medium.com/javascript-algorithms/javascript-algorithms-bubble-sort-3d27f285c3b2 and https://flexiple.com/bubble-sort-javascript/
-  let len = arr.length;
-  let swapped;
-  //only sort while we are still moving things
-  do {
-    swapped = false;
-    for (let i = 0; i < len; i++) {
-      if (arr[i].charCodeAt(0) > arr[i + 1].charCodeAt(0)) {
-        let tmp = arr[i];
-        arr[i] = arr[i + 1];
-        arr[i + 1] = tmp;
-        //make sure we repete the loop since we still are sorting
-        swapped = true;
-      }
-    }
-  } while (swapped);
+  arr.sort()
+
+  //Below is working
+
+  // //perform a buble sort: used: https://medium.com/javascript-algorithms/javascript-algorithms-bubble-sort-3d27f285c3b2 and https://flexiple.com/bubble-sort-javascript/
+  // let len = arr.length;
+  // let swapped;
+  // //only sort while we are still moving things
+  // do {
+  //   swapped = false;
+  //   for (let i = 0; i < len - 1; i++) {
+  //     if (arr[i].charCodeAt(0) > arr[i + 1].charCodeAt(0)) {
+  //       let tmp = arr[i];
+  //       arr[i] = arr[i + 1];
+  //       arr[i + 1] = tmp;
+  //       //make sure we repete the loop since we still are sorting
+  //       swapped = true;
+  //     }
+  //   }
+  // } while (swapped);
 
 };
 
