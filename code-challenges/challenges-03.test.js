@@ -119,7 +119,20 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetize = (arr) => {
-  // Solution code here...
+  return arr.sort(function (l, r) {
+    if (l.toUpperCase > r.toUpperCase) {
+      return 1
+    } else if (l.toUpperCase < r.toUpperCase) {
+      return -1
+    } else {
+      if (l > r) {
+        return 1
+      } else if (l < r) {
+        return -1
+      }
+      return 0
+    }
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
