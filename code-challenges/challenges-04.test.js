@@ -70,12 +70,13 @@ Return an array containing all the matches.
 
 const isCapitalized = (str) => {
   //get array of wards that are capitalized
-  let arr = str.match(/[A-Z]\w+/gm)
+  const arr = str.match(/[A-Z]\w+/gm)
 
   //in the event arr is null (no matching words) return and epty array
   if (arr === null) {
     return []
   }
+  return arr
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -85,13 +86,21 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  //get array of wards that are capitalized and start with the letters a-j
-  let arr = str.match(/[A-J]\w+/gm)
+  //result
+  const result = []
 
-  //in the event arr is null (no matching words) return and epty array
-  if (arr === null) {
-    return []
-  }
+  //define rgx
+  const startsWithJ = /[A-J]\w+/gm
+
+  // loop through arr
+  arr.forEach(city => {
+    if (startsWithJ.test(city)) {
+      result.push(city)
+    }
+  });
+
+  //return result
+  return result
 };
 
 /* ------------------------------------------------------------------------------------------------
