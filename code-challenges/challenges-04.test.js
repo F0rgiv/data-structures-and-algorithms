@@ -87,21 +87,22 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 
 const citiesAtoJ = (arr) => {
   //result
-  const result = []
+  const result = [];
 
   //define rgx
-  const startsWithJ = /[A-J]\w+/gm
+  const startsWithJ = /^[A-J]/;
 
   // loop through arr
   arr.forEach(city => {
     if (startsWithJ.test(city)) {
-      result.push(city)
+      result.push(city);
     }
   });
 
   //return result
-  return result
+  return result;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
