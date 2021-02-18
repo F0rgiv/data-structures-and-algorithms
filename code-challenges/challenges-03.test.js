@@ -120,16 +120,11 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 
 const alphabetize = (arr) => {
   return arr.sort(function (l, r) {
-    if (l.toUpperCase > r.toUpperCase) {
+    if (l > r) {
       return 1
-    } else if (l.toUpperCase < r.toUpperCase) {
+    } else if (l < r) {
       return -1
     } else {
-      if (l > r) {
-        return 1
-      } else if (l < r) {
-        return -1
-      }
       return 0
     }
   })
@@ -170,9 +165,9 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 
 const alphabetizeBetter = (arr) => {
   return arr.sort(function (l, r) {
-    if (l > r ) {
+    if (l.toUpperCase() > r.toUpperCase()) {
       return 1
-    } else if (l < r) {
+    } else if (l.toUpperCase() < r.toUpperCase()) {
       return -1
     } else {
       return 0
@@ -259,7 +254,31 @@ If two people have the same full name, the younger one should come first. Do not
 ------------------------------------------------------------------------------------------------ */
 
 const sortPeopleBetter = (arr) => {
-  // Solution code here...
+  return arr.sort(function (l, r) {
+    if (l.lastName > r.lastName) {
+      return 1
+    } else if (l.lastName < r.lastName) {
+      return -1
+    } else {
+      return arr.sort(function (l, r) {
+        if (l.firstName > r.firstName) {
+          return 1
+        } else if (l.firstName < r.firstName) {
+          return -1
+        } else {
+          return arr.sort(function (l, r) {
+            if (l.age > r.age) {
+              return 1
+            } else if (l.age < r.age) {
+              return -1
+            } else {
+              return 0
+            }
+          })
+        }
+      })
+    }
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -285,7 +304,35 @@ const meetings = [
 ];
 
 const sortMeetingsByDay = (arr) => {
-  // Solution code here...
+  arr.forEach(day => {
+    //add an easily sortable date val
+    if (day === 'Monday') {
+      day.dayInt = 1
+    } if (day === 'Tuesday') {
+      day.dayInt = 2
+    } if (day === 'Wednesday') {
+      day.dayInt = 3
+    } if (day === 'Thursday') {
+      day.dayInt = 4
+    } if (day === 'Friday') {
+      day.dayInt = 5
+    } if (day === 'Saturday') {
+      day.dayInt = 6
+    } else {
+      day.dayInt = 7
+    }
+
+    //sort
+    return arr.sort(function (l, r) {
+      if (l.dayInt > r.dayInt) {
+        return 1
+      } else if (l.dayInt < r.dayInt) {
+        return -1
+      } else {
+        return 0
+      }
+    })
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -368,7 +415,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should alphabetize without regard to capitalization', () => {
     expect(alphabetizeBetter(['Alice', 'apple', 'alert', 'Average'])).toStrictEqual(['alert', 'Alice', 'apple', 'Average']);
     const ans = alphabetizeBetter(['alphabet', 'Zebra', 'Alphabet', 'carrot']);
@@ -437,6 +484,7 @@ xdescribe('Testing challenge 11', () => {
 xdescribe('Testing challenge 12', () => {
   test('It should sort meetings by the day on which they happen', () => {
     const sortedMeetings = sortMeetingsByDay(meetings);
+    console.log(sortedMeetings)
     expect(sortedMeetings.slice(0, 2)).toEqual(expect.arrayContaining([new Meeting('Monday', '0900', '0945'), new Meeting('Monday', '0900', '1000')]));
     expect(sortedMeetings[2]).toStrictEqual(new Meeting('Tuesday', '1145', '1315'));
     expect(sortedMeetings.slice(3, 5)).toEqual(expect.arrayContaining([new Meeting('Wednesday', '0930', '1000'), new Meeting('Wednesday', '1300', '1500')]));
