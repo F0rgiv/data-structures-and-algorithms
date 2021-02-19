@@ -117,16 +117,21 @@ Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
 const matchMonth = (input) => {
-  // see if it matches exactly one of the wanted values and return true if it does
-  if (/^October$/.test(input)) { return true }
-  if (/^october$/.test(input)) { return true }
-  if (/^Oct$/.test(input)) { return true }
-  if (/^oct$/.test(input)) { return true }
-  
-  //else return false
-  return false
-};
+  // this is what I was supposed to learn
+  return /^[Oo]ct(ober)?$/.test(input)
 
+  //https://regex101.com/
+  // ^[Oo]ct(ober)?$
+  // /
+  // ^ asserts position at start of a line
+  // Match a single character present in the list below [Oo]
+  // Oo matches a single character in the list Oo (case sensitive)
+  // ct matches the characters ct literally (case sensitive)
+  // 1st Capturing Group (ober)?
+  // ? Quantifier — Matches between zero and one times, as many times as possible, giving back as needed (greedy)
+  // ober matches the characters ober literally (case sensitive)
+  // $ asserts position at the end of a line
+  
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
 
