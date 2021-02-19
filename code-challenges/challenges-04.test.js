@@ -131,7 +131,7 @@ const matchMonth = (input) => {
   // ? Quantifier — Matches between zero and one times, as many times as possible, giving back as needed (greedy)
   // ober matches the characters ober literally (case sensitive)
   // $ asserts position at the end of a line
-  
+};
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
 
