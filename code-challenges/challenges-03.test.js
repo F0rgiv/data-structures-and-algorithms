@@ -170,7 +170,7 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 
 const alphabetizeBetter = (arr) => {
   return arr.sort(function (l, r) {
-    if (l > r ) {
+    if (l > r) {
       return 1
     } else if (l < r) {
       return -1
@@ -284,8 +284,32 @@ const meetings = [
   new Meeting('Friday', '1200', '1345'),
 ];
 
+const days = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday'
+]
+
 const sortMeetingsByDay = (arr) => {
-  // Solution code here...
+  // Sort on meeting days by days.index value on day names.
+  return arr.sort((l, r) => {
+    // getindex val
+    const lnum = days.indexOf(l.dayOfWeek);
+    const rnum = days.indexOf(r.dayOfWeek);
+
+    //sort on index val
+    if (lnum > rnum) {
+      return 1
+    } else if (lnum < rnum) {
+      return -1
+    } else {
+      return 0
+    }
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -434,7 +458,7 @@ xdescribe('Testing challenge 11', () => {
   });
 });
 
-xdescribe('Testing challenge 12', () => {
+describe('Testing challenge 12', () => {
   test('It should sort meetings by the day on which they happen', () => {
     const sortedMeetings = sortMeetingsByDay(meetings);
     expect(sortedMeetings.slice(0, 2)).toEqual(expect.arrayContaining([new Meeting('Monday', '0900', '0945'), new Meeting('Monday', '0900', '1000')]));
