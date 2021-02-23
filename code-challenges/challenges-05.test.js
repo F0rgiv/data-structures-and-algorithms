@@ -148,10 +148,13 @@ const listFoods = (recipe) => {
   // loop through recipy
   recipe.ingredients.forEach(str => {
     //get the location of the first ' '
-    let firstindex = str.indexOf(' ') + 1
+    let firstindex = str.indexOf(' ') + 1;
+
+    //get to the secont space
+    let secondindex = str.indexOf(' ', firstindex) + 1;
 
     // slice the str starting on the char after the second ' '  
-    let ingeridiant = (str.slice(str.indexOf(' ', firstindex) + 1));
+    let ingeridiant = (str.slice(secondindex));
 
     // push the indrediant to the result
     result.push(ingeridiant);
