@@ -8,7 +8,8 @@ Write a function named returnTen, takes in a string and uses split and splice to
 ------------------------------------------------------------------------------------------------ */
 
 function returnTen(str){
-  // Solution code here...
+  //split into an arr of the chars then grab just the last 10
+  atr.split("").splice(-10);
 }
 
 /* ------------------------------------------------------------------------------------------------
