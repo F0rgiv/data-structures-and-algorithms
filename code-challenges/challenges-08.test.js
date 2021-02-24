@@ -9,7 +9,7 @@ Write a function named returnTen, takes in a string and uses split and splice to
 
 function returnTen(str){
   //split into an arr of the chars then grab just the last 10
-  atr.split("").splice(-10);
+  return str.split("").splice(-10);
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -21,7 +21,8 @@ For example, typeNum([1, 'bob' ,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const typeNum = (arr) => {
-  // Solution code here...
+  //only return if allement is a num
+  return arr.filter(num => typeof num === 'number')
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -33,7 +34,8 @@ For example, containsAnd(['panda', 'ran', 'and']) returns ['panda', 'and'].
 ------------------------------------------------------------------------------------------------ */
 
 const containsAnd = (arr) => {
-  // Solution code here...
+  // Only return strs that contain 'and'
+  return arr.filter(str => /and/.test(str))
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -45,7 +47,8 @@ For example, oddValues([1,2,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const oddValues = (arr) => {
-  // Solution code here...
+  // Only return the odd valls
+  return arr.filter(num => num % 2 > 0)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -60,7 +63,8 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 
 
 const filterStringsWithVowels = (arr) => {
-  // Solution code here...
+  // Only return strs that contain a vowl
+  return arr.filter(str => /[aeiou]/.test(str))
 };
 
 
@@ -73,7 +77,8 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
 const notInFirstArray = (forbiddenValues, arr) => {
-  // Solution code here...
+  // Only return vals in arr but not forbiddenValues
+  return arr.filter(str => !(forbiddenValues.includes(str)));
 };
 
 /* ------------------------------------------------------------------------------------------------
