@@ -23,7 +23,10 @@ Returns: ['dyoll', 'eimaj'];
 ------------------------------------------------------------------------------------------------ */
 
 const getNames = (arr) => {
-  // Solution code here...
+  //func to reverse the str
+  const ReverseString = str => str.split('').reverse().join('');
+  // return just names reversed
+  return arr.map(person => ReverseString(person.name));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -37,7 +40,24 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 ------------------------------------------------------------------------------------------------ */
 
 const count = (target, input) => {
-  // Solution code here...
+  // create func to count
+  function countVal(arr, target) {
+    // if there are no vals return 0
+    if (arr.length === 0) { return 0; }
+
+    return arr.reduce((total, int) => {
+      //only count if 5
+      if (int === target) {
+        return total + 1
+      }
+      return total
+    }, 0);
+  }
+
+  //return the summ of the counts of the arre
+  return input.reduce((total, subArr) => {
+    return total + countVal(subArr, target)
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -52,6 +72,17 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 
 const totalSum = (input) => {
   // Solution code here...
+  function sumNums(arr) {
+    // if there are no vals return 0
+    if (arr.length === 0) { return 0; }
+    // else return the sume of vals in the array
+    return arr.reduce((total, int) => total + int);
+  }
+
+  // return sum of things
+  return input.reduce((total, arr) => {
+    return total + sumNums(arr);
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,7 +98,15 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
+  // Function to clean arrys and rais to the power
+  function filterAndRase(arr) {
+    // Only return if allement is a num divisable by 5
+    const FilteredArr = arr.filter(num => typeof num === 'number' && num % 5 === 0);
+    //return 2 riased ot each val in new arr
+    return FilteredArr.map(num => Math.pow(2,num));
+  }
+
+  return input.map(subArr => filterAndRase(subArr));  
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -133,7 +172,15 @@ let starWarsData = [{
 }];
 
 let findMaleAndFemale = (data) => {
-  // Solution code here...
+  // itereate through and find only those of male or femail
+  return data.reduce((people, person) => {
+    if (person.gender == 'female' || person.gender == 'male' ) {
+      //only append if already there
+      if(people) return `${people} and ${person.name}`;
+      return person.name;
+    }
+    return people;
+  }, '')
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -143,7 +190,13 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
-  // Solution code here...
+  // find shortest person.
+  return data.reduce((curent, person) => {
+    if(parseInt(curent.height) > parseInt(person.height)){
+      return person
+    } 
+    return curent
+  }).name
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -159,7 +212,7 @@ Run your tests from the console: jest challenges-10.test.js
 
 describe('Testing challenge 1', () => {
   test('It returns an array of names reversed', () => {
-    expect(getNames([{name:'lloyd', age: 32, shoeSize: 12}, {name:'jamie', age:21, shoeSize: 8}])).toStrictEqual(['dyoll', 'eimaj']);
+    expect(getNames([{ name: 'lloyd', age: 32, shoeSize: 12 }, { name: 'jamie', age: 21, shoeSize: 8 }])).toStrictEqual(['dyoll', 'eimaj']);
     expect(getNames([])).toStrictEqual([]);
   });
 });
