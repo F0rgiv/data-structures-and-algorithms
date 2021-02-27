@@ -207,14 +207,11 @@ const characters = [
 const countNumberOfChildren = (arr) => {
   // Sum the children
   return arr.reduce((total, house) => {
-    console.log(house)
     if (house.children) {
-      console.log(total)
       total = total + house.children.length;
     }
     return total;
-  }
-  ), 0;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -303,13 +300,13 @@ const snorlaxData = {
 };
 
 const extractStat = (statName, arr) => {
-    // push only the names into the returned arr
-    return arr.reduce((collector, stat) => {
-     if (stat.stat.name == statName) {
-       return stat
-     } 
-     return collector
-    }, null)
+  // push only the names into the returned arr
+  return arr.reduce((collector, stat) => {
+    if (stat.stat.name == statName) {
+      return stat
+    }
+    return collector
+  }, null)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -331,13 +328,13 @@ Write a function named extractChildren that, given the array of characters from 
 
 const extractChildren = (arr) => {
   // filter the arr
-  const filteredArr = arr.filter(val => /a/.test(val));
+  const filteredArr = arr.filter(val => /a/.test(val.name));
   //get children
   return filteredArr.reduce((children, house) => {
     if (!(house.children)) {
       return children;
     }
-    children.push(house.children)
+    house.children.map(child =>children.push(child))
     return children;
   }, [])
 };
@@ -394,7 +391,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should return the total number of children', () => {
     expect(countNumberOfChildren(characters)).toStrictEqual(14);
   });
@@ -418,7 +415,7 @@ describe('Testing challenge 10', () => {
   });
 });
 
-xdescribe('Testing challenge 11', () => {
+describe('Testing challenge 11', () => {
   test('It should return an array containing the names of the children', () => {
     expect(extractChildren(characters)).toStrictEqual(['Robb', 'Sansa', 'Arya', 'Bran', 'Rickon', 'Drogon', 'Rhaegal', 'Viserion', 'Margaery', 'Loras']);
     expect(extractChildren(characters).length).toStrictEqual(10);
