@@ -12,3 +12,6 @@ Take an element from the end of the array and then storing it in a temp int, mov
 
 ## Solution
 ![Whiteboard](/assets/arrayReverse.PNG)
+
+## Colaborators
+@Edward Hou, @Pablo Rosales, @Amelia Waggoner
