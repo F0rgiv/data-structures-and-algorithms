@@ -2,6 +2,19 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch ArrayReverse",
+            "request": "launch",
+            "mainClass": "challenges.ArrayReverse",
+            "projectName": "data-structures-and-algorithms_6e768523"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
             "type": "pwa-node",
             "request": "launch",
             "name": "Launch Program",
