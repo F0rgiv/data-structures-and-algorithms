@@ -20,5 +20,12 @@ public class ArrayShiftTest {
       "[4,8,15,23,42], 16 should return [4,8,15,16,23,42]",
       ArrayShift.insertShiftArray(startArr2, 16),
       endArr2);
+
+    int[] startArr3 = {};
+    int[] endArr3 = {7};
+    assertArrayEquals(
+      "[],7 should return [7]",
+      ArrayShift.insertShiftArray(startArr3, 7),
+      endArr3);
   }
 }
