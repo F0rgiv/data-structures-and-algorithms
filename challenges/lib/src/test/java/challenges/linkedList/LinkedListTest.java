@@ -8,7 +8,7 @@ public class LinkedListTest {
     //    Can successfully instantiate an empty linked list
     @Test
     public void LinkedListTestInstantiate() {
-        LinkedList ll = new LinkedList();
+        LinkedList<String> ll = new LinkedList<>();
         assertEquals("should be empty", 0, ll.length);
     }
 
@@ -17,7 +17,7 @@ public class LinkedListTest {
     //    The head property will properly point to the first node in the linked list
     @Test
     public void LinkedListTestInsert() {
-        LinkedList ll = new LinkedList();
+        LinkedList<String> ll = new LinkedList<>();
         ll.insert("test1");
         ll.insert("test2");
         assertTrue("contains list1", ll.includes("test1"));
@@ -28,7 +28,7 @@ public class LinkedListTest {
     //    The head property will properly point to the first node in the linked list
     @Test
     public void LinkedListTestHead() {
-        LinkedList ll = new LinkedList();
+        LinkedList<String> ll = new LinkedList<>();
         ll.insert("c"); //is new head
         assertEquals("heads val should now be c", "c", ll.head.value);
         ll.insert("b"); //is new head
@@ -40,7 +40,7 @@ public class LinkedListTest {
     //    Can properly return a collection of all the values that exist in the linked list
     @Test
     public void LinkedListTestToString() {
-        LinkedList ll = new LinkedList();
+        LinkedList<String> ll = new LinkedList<>();
         ll.insert("c");
         ll.insert("b");
         ll.insert("a");
@@ -50,7 +50,7 @@ public class LinkedListTest {
 
     @Test
     public void LinkedListTestRecursiveToString() {
-        LinkedList ll = new LinkedList();
+        LinkedList<String> ll = new LinkedList<>();
         ll.insert("c");
         ll.insert("b");
         ll.insert("a");
@@ -62,7 +62,7 @@ public class LinkedListTest {
 //    Can successfully add multiple nodes to the end of a linked list
     @Test
     public void LinkedListTestAppend() {
-        LinkedList ll = new LinkedList();
+        LinkedList<String> ll = new LinkedList<>();
         ll.append("a");
         ll.append("b");
         ll.append("c");
@@ -74,7 +74,7 @@ public class LinkedListTest {
 //    Can successfully insert a node before the first node of a linked list
     @Test
     public void LinkedListTestInsertBefore() throws Exception {
-        LinkedList ll = new LinkedList();
+        LinkedList<String> ll = new LinkedList<>();
         ll.insert("c");
         ll.insert("b");
         ll.insert("a");
@@ -92,7 +92,7 @@ public class LinkedListTest {
 //    Can successfully insert a node after the last node of the linked list
     @Test
     public void LinkedListTestInsertAfter() throws Exception {
-        LinkedList ll = new LinkedList();
+        LinkedList<String> ll = new LinkedList<>();
         ll.insert("c");
         ll.insert("b");
         ll.insert("a");
@@ -109,13 +109,44 @@ public class LinkedListTest {
     //Insert@ throws exception if index isn't found
     @Test(expected = Exception.class)
     public void LinkedListTestInsertBeforeException() throws Exception {
-        LinkedList ll = new LinkedList();
+        LinkedList<String> ll = new LinkedList<>();
         ll.insertBefore("c", "new");
     }
 
     @Test(expected = Exception.class)
     public void LinkedListTestInsertAfterException() throws Exception {
-        LinkedList ll = new LinkedList();
+        LinkedList<String> ll = new LinkedList<>();
         ll.insertAfter("c", "new");
+    }
+
+    @Test
+    public void LinkedListTestT(){
+        LinkedList<Integer> ll = new LinkedList<>();
+        ll.insert(1);
+    }
+
+    @Test
+    public void LinkedListTestGetIndex(){
+        LinkedList<Integer> ll = new LinkedList<>();
+        ll.append(1);
+        ll.append(3);
+        ll.append(8);
+        ll.append(2);
+        System.out.println(ll);
+        assertEquals("To String should work as expected", 1, (int)ll.getIndex(0));
+        assertEquals("To String should work as expected", 3, (int)ll.getIndex(1));
+        assertEquals("To String should work as expected", 2, (int)ll.getIndex(3));
+    }
+
+    @Test
+    public void LinkedListTestKthFromEnd(){
+        LinkedList<Integer> ll = new LinkedList<>();
+        ll.append(1);
+        ll.append(3);
+        ll.append(8);
+        ll.append(2);
+        assertEquals("To String should work as expected", 2, (int)ll.kthFromEnd(0));
+        assertEquals("To String should work as expected", 3, (int)ll.kthFromEnd(2));
+        assertEquals("To String should work as expected", 1, (int)ll.kthFromEnd(3));
     }
 }
