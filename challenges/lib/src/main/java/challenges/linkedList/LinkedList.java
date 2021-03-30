@@ -1,17 +1,21 @@
 package challenges.linkedList;
 
-public class LinkedList {
-    Node head; //head
-    Node tail; //head
+import javax.annotation.Nullable;
+
+public class LinkedList <T> {
+    @Nullable
+    Node<T> head; //head
+    @Nullable
+    Node<T> tail; //head
     int length; //track the length of the list
 
     public LinkedList() {
         length = 0;
     }
 
-    public void insert(String value) {
+    public void insert(T value) {
         //create new node
-        Node newNode = new Node(value, this.head);
+        Node<T> newNode = new Node<>(value, this.head);
         length++;
 
         //simply set tail and head if the first node
@@ -21,8 +25,8 @@ public class LinkedList {
         head = newNode;
     }
 
-    public boolean includes(String value) {
-        Node currentNode = head;
+    public boolean includes(T value) {
+        Node<T> currentNode = head;
         while (currentNode != null) {
             if (currentNode.value.equals(value)) return true;
             currentNode = currentNode.next;
@@ -30,19 +34,20 @@ public class LinkedList {
         return false;
     }
 
-    public boolean includesRecursive(String value) {
+    public boolean includesRecursive(T value) {
         return includesRecursive(this.head, value);
     }
 
-    private boolean includesRecursive(Node current, String Value) {
+    private boolean includesRecursive(Node<T> current, T Value) {
         if (current == null) return false;
         if (current.value.equals(Value)) return true;
         return includesRecursive(current, Value);
     }
 
+    @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        Node currentNode = head;
+        Node<T> currentNode = head;
         while (currentNode != null) {
             result.append(String.format("{ %s } -> ", currentNode.value));
             currentNode = currentNode.next;
@@ -58,15 +63,15 @@ public class LinkedList {
         return result;
     }
 
-    private String RecursiveToString(Node currentNode, String result) {
+    private String RecursiveToString(Node<T> currentNode, String result) {
         if (currentNode != null)
             result = String.format("{ %s } -> ", currentNode.value) + RecursiveToString(currentNode.next, result);
         return result;
     }
 
-    public void append(String value) {
+    public void append(T value) {
         //create new node
-        Node newNode = new Node(value, this.tail);
+        Node<T> newNode = new Node<>(value, null);
         length++;
 
         //simply set tail and head if the first node
@@ -80,7 +85,7 @@ public class LinkedList {
         tail = newNode;
     }
 
-    public void insertBefore(String index, String newValue) throws Exception {
+    public void insertBefore(T index, T newValue) throws Exception {
         if (index.equals(this.head.value)) {
             insert(newValue);
             return;
@@ -88,10 +93,10 @@ public class LinkedList {
         insertBefore(this.head, index, newValue);
     }
 
-    private void insertBefore(Node current, String value, String newValue) throws Exception {
+    private void insertBefore(Node<T> current, T value, T newValue) throws Exception {
         if (current.next == null) throw new Exception("value not found");
         if (current.next.value.equals(value)) {
-            Node newNode = new Node(newValue, current.next);
+            Node<T> newNode = new Node(newValue, current.next);
             length++;
             current.next = newNode;
             return;
@@ -99,14 +104,14 @@ public class LinkedList {
         insertBefore(current.next, value, newValue);
     }
 
-    public void insertAfter(String value, String newValue) throws Exception {
+    public void insertAfter(T value, T newValue) throws Exception {
         insertAfter(this.head, value, newValue);
     }
 
-    private void insertAfter(Node current, String value, String newValue) throws Exception {
+    private void insertAfter(Node<T> current, T value, T newValue) throws Exception {
         if (current == null) throw new Exception("value not found");
         if (current.value.equals(value)) {
-            Node newNode = new Node(newValue, current.next);
+            Node<T> newNode = new Node(newValue, current.next);
             length++;
 
             current.next = newNode;
@@ -116,13 +121,28 @@ public class LinkedList {
         }
         insertAfter(current.next, value, newValue);
     }
+
+    public T getIndex(int index){
+        if (index > length-1 || index < 0) throw new IndexOutOfBoundsException();
+        Node<T> current = head;
+        int i = 0;
+        while (i < index){
+            current = current.next;
+            i++;
+        }
+        return current.value;
+    }
+
+    public T kthFromEnd(int k){
+        return getIndex(this.length - k - 1);
+    }
 }
 
-class Node {
-    String value;
-    Node next;
+class Node <T>{
+    T value;
+    Node<T> next;
 
-    Node(String input, Node next) {
+    Node(T input, Node<T> next) {
         this.value = input;
         this.next = next;
     }
