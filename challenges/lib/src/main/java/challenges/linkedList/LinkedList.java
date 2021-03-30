@@ -11,17 +11,13 @@ public class LinkedList {
 
     public void insert(String value) {
         //create new node
-        Node newNode = new Node(value);
+        Node newNode = new Node(value, this.head);
         length++;
 
         //simply set tail and head if the first node
         if (head == null) {
-            head = newNode;
             tail = newNode;
-            return;
         }
-        //else attach to the head and update.
-        newNode.next = head;
         head = newNode;
     }
 
@@ -70,7 +66,7 @@ public class LinkedList {
 
     public void append(String value) {
         //create new node
-        Node newNode = new Node(value);
+        Node newNode = new Node(value, this.tail);
         length++;
 
         //simply set tail and head if the first node
@@ -93,12 +89,10 @@ public class LinkedList {
     }
 
     private void insertBefore(Node current, String value, String newValue) throws Exception {
-        if (current.next == null) throw new Exception("index not found");
+        if (current.next == null) throw new Exception("value not found");
         if (current.next.value.equals(value)) {
-            Node newNode = new Node(newValue);
+            Node newNode = new Node(newValue, current.next);
             length++;
-
-            newNode.next = current.next;
             current.next = newNode;
             return;
         }
@@ -110,12 +104,11 @@ public class LinkedList {
     }
 
     private void insertAfter(Node current, String value, String newValue) throws Exception {
-        if (current == null) throw new Exception("index not found");
+        if (current == null) throw new Exception("value not found");
         if (current.value.equals(value)) {
-            Node newNode = new Node(newValue);
+            Node newNode = new Node(newValue, current.next);
             length++;
 
-            newNode.next = current.next;
             current.next = newNode;
             //catch updating tail.
             if (current.equals(this.tail)) this.tail = newNode;
@@ -129,8 +122,9 @@ class Node {
     String value;
     Node next;
 
-    Node(String input) {
-        value = input;
+    Node(String input, Node next) {
+        this.value = input;
+        this.next = next;
     }
 }
 
