@@ -120,33 +120,52 @@ public class LinkedListTest {
     }
 
     @Test
-    public void LinkedListTestT(){
+    public void LinkedListTestT() {
         LinkedList<Integer> ll = new LinkedList<>();
         ll.insert(1);
     }
 
     @Test
-    public void LinkedListTestGetIndex(){
+    public void LinkedListTestGetIndex() {
         LinkedList<Integer> ll = new LinkedList<>();
         ll.append(1);
         ll.append(3);
         ll.append(8);
         ll.append(2);
         System.out.println(ll);
-        assertEquals("To String should work as expected", 1, (int)ll.getIndex(0));
-        assertEquals("To String should work as expected", 3, (int)ll.getIndex(1));
-        assertEquals("To String should work as expected", 2, (int)ll.getIndex(3));
+        assertEquals("To String should work as expected", 1, (int) ll.getIndex(0));
+        assertEquals("To String should work as expected", 3, (int) ll.getIndex(1));
+        assertEquals("To String should work as expected", 2, (int) ll.getIndex(3));
     }
 
     @Test
-    public void LinkedListTestKthFromEnd(){
+    public void LinkedListTestKthFromEnd() {
         LinkedList<Integer> ll = new LinkedList<>();
         ll.append(1);
+
+        //Where the linked list is of a size 1
+        assertEquals("KthFromEnd should work as expected", 1, (int) ll.kthFromEnd(0));
         ll.append(3);
         ll.append(8);
         ll.append(2);
-        assertEquals("To String should work as expected", 2, (int)ll.kthFromEnd(0));
-        assertEquals("To String should work as expected", 3, (int)ll.kthFromEnd(2));
-        assertEquals("To String should work as expected", 1, (int)ll.kthFromEnd(3));
+
+        //Where k and the length of the list are the same
+        assertEquals("KthFromEnd should work as expected", 1, (int) ll.kthFromEnd(3));
+        assertEquals("KthFromEnd should work as expected", 2, (int) ll.kthFromEnd(0));
+        //Happy Path where k is not at the end, but somewhere in the middle of the linked list
+        assertEquals("KthFromEnd should work as expected", 3, (int) ll.kthFromEnd(2));
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void LinkedListTestKthFromEndNegativeException() {
+        LinkedList<Integer> ll = new LinkedList<>();
+        ll.append(1);
+        ll.kthFromEnd(-1);
+    }
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void LinkedListTestKthFromEndToBigException() {
+        LinkedList<Integer> ll = new LinkedList<>();
+        ll.append(1);
+        ll.kthFromEnd(10);
     }
 }
