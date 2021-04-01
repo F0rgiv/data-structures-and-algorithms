@@ -83,6 +83,18 @@ returns:
 
 This will add a new node with the given newValue immediately after the first value node. This has a cost of O(n).
 
+### zipLists
+args:
+LinkedList linkedList1 | the first linked list you would like to zip
+LinkedList linkedList2 | the second linked list you would like to zip
+
+returns:
+LinkedList | Zipped list.
+
+This will a single linked list representing the two list provided merged into one. This has a cost of time O(n) and space O(1).
+
+For example zipLists("{ 1 } -> { 3 } -> { 2 } -> NULL","{ 5 } -> { 9 } -> { 4 } -> NULL") would return "{ 1 } -> { 5 } -> { 3 } -> { 9 } -> { 2 } -> { 4 } -> NULL"
+
 ## Solution Whiteboards
 ![Whiteboard](/assets/ll-d2.PNG)
 ![Whiteboard](/assets/linked-list-index.jpeg)

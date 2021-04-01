@@ -168,4 +168,42 @@ public class LinkedListTest {
         ll.append(1);
         ll.kthFromEnd(10);
     }
+
+    @Test
+    public void LinkedListTestZipLists() {
+        LinkedList<Integer> ll1 = new LinkedList<>();
+        ll1.append(1);
+        ll1.append(3);
+        ll1.append(2);
+        LinkedList<Integer> ll2 = new LinkedList<>();
+        ll2.append(5);
+        ll2.append(9);
+        ll2.append(4);
+        LinkedList result = LinkedList.zipLists(ll1,ll2);
+        String expected = "{ 1 } -> { 5 } -> { 3 } -> { 9 } -> { 2 } -> { 4 } -> NULL";
+        assertEquals("should properly zip",expected, result.toString());
+
+        LinkedList<Integer> ll3 = new LinkedList<>();
+        ll3.append(1);
+        ll3.append(3);
+        LinkedList<Integer> ll4 = new LinkedList<>();
+        ll4.append(5);
+        ll4.append(9);
+        ll4.append(4);
+        result = LinkedList.zipLists(ll3,ll4);
+        expected = "{ 1 } -> { 5 } -> { 3 } -> { 9 } -> { 4 } -> NULL";
+        assertEquals("should properly zip",expected, result.toString());
+
+        LinkedList<Integer> ll5 = new LinkedList<>();
+        ll5.append(1);
+        ll5.append(3);
+        ll5.append(2);
+        LinkedList<Integer> ll6 = new LinkedList<>();
+        ll6.append(5);
+        ll6.append(9);
+        result = LinkedList.zipLists(ll5,ll6);
+        expected = "{ 1 } -> { 5 } -> { 3 } -> { 9 } -> { 2 } -> NULL";
+        assertEquals("should properly zip",expected, result.toString());
+    }
+
 }
