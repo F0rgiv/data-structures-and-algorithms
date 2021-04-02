@@ -1,11 +1,8 @@
 package challenges.linkedList;
 
-import javax.annotation.Nullable;
 
 public class LinkedList <T> {
-    @Nullable
     Node<T> head; //head
-    @Nullable
     Node<T> tail; //head
     int length; //track the length of the list
 
@@ -41,7 +38,7 @@ public class LinkedList <T> {
     private boolean includesRecursive(Node<T> current, T Value) {
         if (current == null) return false;
         if (current.value.equals(Value)) return true;
-        return includesRecursive(current, Value);
+        return includesRecursive(current.next, Value);
     }
 
     @Override
@@ -96,7 +93,7 @@ public class LinkedList <T> {
     private void insertBefore(Node<T> current, T value, T newValue) throws Exception {
         if (current.next == null) throw new Exception("value not found");
         if (current.next.value.equals(value)) {
-            Node<T> newNode = new Node(newValue, current.next);
+            Node<T> newNode = new Node<>(newValue, current.next);
             length++;
             current.next = newNode;
             return;
@@ -111,7 +108,7 @@ public class LinkedList <T> {
     private void insertAfter(Node<T> current, T value, T newValue) throws Exception {
         if (current == null) throw new Exception("value not found");
         if (current.value.equals(value)) {
-            Node<T> newNode = new Node(newValue, current.next);
+            Node<T> newNode = new Node<>(newValue, current.next);
             length++;
 
             current.next = newNode;
@@ -136,6 +133,34 @@ public class LinkedList <T> {
     public T kthFromEnd(int k){
         return getIndex(this.length - k - 1);
     }
+
+    public static<T> LinkedList<T> zipLists(LinkedList<T> linkedList1, LinkedList<T> linkedList2){
+        if(linkedList1 == null) return linkedList2;
+
+        //link and return the two lists
+        zipLists(linkedList1.head,linkedList2.head);
+        linkedList1.length = linkedList1.length + linkedList2.length; //don't like this should update length to be private.
+        //return the updated list
+        return linkedList1;
+    }
+
+    private static<T> void zipLists(Node<T> curr1, Node<T> curr2){
+        if (curr2 == null) return;
+        zipLists2(curr2, curr1.next);
+        curr1.next = curr2;
+    }
+
+    private static<T> void zipLists2(Node<T> curr1, Node<T> curr2){
+        Node<T> temp1 = curr1.next;
+        if (curr2 == null) return;
+        curr1.next = curr2;
+        Node<T> temp2 = curr2.next;
+        if (temp1 == null) return;
+        curr2.next = temp1;
+        curr1 = temp1;
+        curr2 = temp2;
+        zipLists(curr1,curr2);
+    }
 }
 
 class Node <T>{
@@ -145,6 +170,14 @@ class Node <T>{
     Node(T input, Node<T> next) {
         this.value = input;
         this.next = next;
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "value=" + value +
+                ", next=" + next +
+                '}';
     }
 }
 
