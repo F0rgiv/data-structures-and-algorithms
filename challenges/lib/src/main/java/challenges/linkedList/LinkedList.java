@@ -38,7 +38,7 @@ public class LinkedList <T> {
     private boolean includesRecursive(Node<T> current, T Value) {
         if (current == null) return false;
         if (current.value.equals(Value)) return true;
-        return includesRecursive(current, Value);
+        return includesRecursive(current.next, Value);
     }
 
     @Override
@@ -134,27 +134,27 @@ public class LinkedList <T> {
         return getIndex(this.length - k - 1);
     }
 
-    public static LinkedList zipLists(LinkedList linkedList1, LinkedList linkedList2){
-        //check for a null list
-        if (linkedList1.head == null) return linkedList2;
-        if (linkedList2.head == null) return linkedList1;
+    public static<T> LinkedList<T> zipLists(LinkedList<T> linkedList1, LinkedList<T> linkedList2){
+        if(linkedList1 == null) return linkedList2;
 
-        //create trackers
-        Node curr1 = linkedList1.head;
-        Node curr2 = linkedList2.head;
-
-        //link the two lists
-        zipLists(curr1,curr2);
-
+        //link and return the two lists
+        zipLists(linkedList1.head,linkedList2.head);
+        linkedList1.length = linkedList1.length + linkedList2.length; //don't like this should update length to be private.
         //return the updated list
         return linkedList1;
     }
 
-    private static void zipLists(Node curr1, Node curr2){
-        Node temp1 = curr1.next;
+    private static<T> void zipLists(Node<T> curr1, Node<T> curr2){
+        if (curr2 == null) return;
+        zipLists2(curr2, curr1.next);
+        curr1.next = curr2;
+    }
+
+    private static<T> void zipLists2(Node<T> curr1, Node<T> curr2){
+        Node<T> temp1 = curr1.next;
         if (curr2 == null) return;
         curr1.next = curr2;
-        Node temp2 = curr2.next;
+        Node<T> temp2 = curr2.next;
         if (temp1 == null) return;
         curr2.next = temp1;
         curr1 = temp1;

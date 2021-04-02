@@ -179,7 +179,7 @@ public class LinkedListTest {
         ll2.append(5);
         ll2.append(9);
         ll2.append(4);
-        LinkedList result = LinkedList.zipLists(ll1,ll2);
+        LinkedList<Integer> result = LinkedList.zipLists(ll1,ll2);
         String expected = "{ 1 } -> { 5 } -> { 3 } -> { 9 } -> { 2 } -> { 4 } -> NULL";
         assertEquals("should properly zip",expected, result.toString());
 
@@ -206,4 +206,27 @@ public class LinkedListTest {
         assertEquals("should properly zip",expected, result.toString());
     }
 
+    @Test
+    public void zipMassive() {
+        LinkedList<Integer> ll1 = new LinkedList<>();
+        LinkedList<Integer> ll2 = new LinkedList<>();
+        for (int i = 0; i < 1000000; i++) {
+            ll1.append(i);
+            ll1.append(i);
+        }
+        //validate that
+        LinkedList.zipLists(ll1,ll2);
+    }
+
+
+    @Test
+    public void includesRecursive() {
+        LinkedList<Integer> linkedList = new LinkedList<>();
+        linkedList.append(1);
+        linkedList.append(2);
+        linkedList.append(3);
+        assertTrue("it contains 1", linkedList.includesRecursive(1));
+        assertTrue("it contains 2", linkedList.includesRecursive(2));
+        assertTrue("it contains 3", linkedList.includesRecursive(3));
+    }
 }
