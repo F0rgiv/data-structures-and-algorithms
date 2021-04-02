@@ -1,6 +1,5 @@
 package challenges.stacksandqueues;
 
-import challenges.linkedList.LinkedList;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -27,27 +26,29 @@ public class StackTest {
         stack.push(2);
         //Can successfully pop off the stack
         //Can successfully empty a stack after multiple pops
-        assertEquals("should return 2", 2, (int)stack.pop());
-        assertEquals("should return 1", 1, (int)stack.pop());
+        assertEquals("should return 2", 2, (int) stack.pop());
+        assertEquals("should return 1", 1, (int) stack.pop());
         //Calling pop or peek on empty stack raises exception
+        assertThrows(RuntimeException.class, stack::peek);
     }
 
     @Test
     public void peek() {
         Stack<Integer> stack = new Stack<>();
+        //Calling pop or peek on empty stack raises exception
+        assertThrows(RuntimeException.class, stack::peek);
         //Can successfully peek the next item on the stack
         stack.push(1);
-        assertEquals("should return 1", 1, (int)stack.peek());
+        assertEquals("should return 1", 1, (int) stack.peek());
         stack.push(2);
-        assertEquals("should return 2", 2, (int)stack.peek());
-        //Calling pop or peek on empty stack raises exception
+        assertEquals("should return 2", 2, (int) stack.peek());
     }
 
     @Test
     public void isEmpty() {
         Stack<Integer> stack = new Stack<>();
-        assertFalse("Stack is currently empty",stack.isEmpty());
+        assertFalse("Stack is currently empty", stack.isEmpty());
         stack.push(1);
-        assertTrue("Stack is not currently empty",stack.isEmpty());
+        assertTrue("Stack is not currently empty", stack.isEmpty());
     }
 }

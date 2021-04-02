@@ -25,27 +25,30 @@ public class QueueTest {
         queue.enqueue(2);
         //Can successfully dequeue off the queue
         //Can successfully empty a queue after multiple dequeues
-        assertEquals("should return 1", 1, (int)queue.dequeue());
-        assertEquals("should return 2", 2, (int)queue.dequeue());
+        assertEquals("should return 1", 1, (int) queue.dequeue());
+        assertEquals("should return 2", 2, (int) queue.dequeue());
         //Calling dequeue on empty queue raises exception
+        assertThrows(RuntimeException.class, queue::peek);
     }
 
     @Test
     public void peek() {
         Queue<Integer> queue = new Queue<>();
+        //Calling peek on empty queue raises exception
+        assertThrows(RuntimeException.class, queue::peek);
         //Can successfully peek the next item on the queue
         queue.enqueue(1);
-        assertEquals("should return 1", 1, (int)queue.peek());
+        assertEquals("should return 1", 1, (int) queue.peek());
         queue.enqueue(2);
-        assertEquals("should return 1", 1, (int)queue.peek());
-        //Calling peek on empty queue raises exception
+        assertEquals("should return 1", 1, (int) queue.peek());
+
     }
 
     @Test
     public void isEmpty() {
         Queue<Integer> queue = new Queue<>();
-        assertFalse("Queue is currently empty",queue.isEmpty());
+        assertFalse("Queue is currently empty", queue.isEmpty());
         queue.enqueue(1);
-        assertTrue("Queue is not currently empty",queue.isEmpty());
+        assertTrue("Queue is not currently empty", queue.isEmpty());
     }
 }
