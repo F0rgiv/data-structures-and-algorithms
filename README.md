@@ -9,4 +9,5 @@ See [setup instructions](https://codefellows.github.io/setup-guide/code-301/3-co
 - [ArrayShift](/challenges/readmes/ArrayShift.md)
 - [binarySearch](/challenges/readmes/binarySearch.md)
 - [linkedList](/challenges/readmes/linkedList.md)
+- [stacks and queues](/challenges/readmes/stacksandqueues.md)
 
