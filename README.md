@@ -10,4 +10,5 @@ See [setup instructions](https://codefellows.github.io/setup-guide/code-301/3-co
 - [binarySearch](/challenges/readmes/binarySearch.md)
 - [linkedList](/challenges/readmes/linkedList.md)
 - [stacks and queues](/challenges/readmes/stacksandqueues.md)
+- [pseudo queue](/challenges/readmes/pseudo-queue.md)
 

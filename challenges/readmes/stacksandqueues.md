@@ -86,13 +86,13 @@ This takes any value as an argument and adds a new node with that value to the t
 
 ---
 
-### pop 
+### dequeue 
     args:
 
     returns:
         <T> | The value from the node.
 
-Removes the node from the top of the queue, and returns the node’s value. This has a cost of O(1).
+Removes the node from the front of the queue and returns the node’s value. This has a cost of O(1).
 
 ---
 

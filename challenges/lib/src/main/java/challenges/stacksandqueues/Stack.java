@@ -23,12 +23,13 @@ public class Stack<T> {
     }
 
     public boolean isEmpty() {
-        if (top == null) return false;
-        return true;
+        return top == null;
     }
 
     @Override
     public String toString() {
-        return top.toString();
+        return "Stack{" +
+                "top=" + top +
+                '}';
     }
 }
