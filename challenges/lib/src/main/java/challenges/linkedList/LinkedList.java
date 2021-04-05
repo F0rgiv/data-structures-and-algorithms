@@ -146,7 +146,7 @@ public class LinkedList <T> {
 
     private static<T> void zipLists(Node<T> curr1, Node<T> curr2){
         if (curr2 == null) return;
-        zipLists2(curr2, curr1.next);
+        zipLists(curr2, curr1.next);
         curr1.next = curr2;
     }
 
