@@ -39,3 +39,5 @@ Removes the node from the front of the queue and returns the node’s value. Thi
         String | A string representing the object.
 
 This will add a new node with the given newValue immediately before the first value node. This has a cost of O(n).
+
+![Whiteboard](/assets/2StaksQueue.PNG)
