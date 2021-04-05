@@ -15,7 +15,7 @@ public class StackTest {
         stack.push(2);
         stack.push(3);
         stack.push(4);
-        String expected = "Node{value=4, next=Node{value=3, next=Node{value=2, next=Node{value=1, next=null}}}}";
+        String expected = "Stack{top=Node{value=4, next=Node{value=3, next=Node{value=2, next=Node{value=1, next=null}}}}}";
         assertEquals("Stack should contain 4 elements", expected, stack.toString());
     }
 
@@ -47,8 +47,8 @@ public class StackTest {
     @Test
     public void isEmpty() {
         Stack<Integer> stack = new Stack<>();
-        assertFalse("Stack is currently empty", stack.isEmpty());
+        assertTrue("Stack is currently empty", stack.isEmpty());
         stack.push(1);
-        assertTrue("Stack is not currently empty", stack.isEmpty());
+        assertFalse("Stack is not currently empty", stack.isEmpty());
     }
 }
