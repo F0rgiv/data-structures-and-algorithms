@@ -47,8 +47,8 @@ public class QueueTest {
     @Test
     public void isEmpty() {
         Queue<Integer> queue = new Queue<>();
-        assertFalse("Queue is currently empty", queue.isEmpty());
+        assertTrue("Queue is currently empty", queue.isEmpty());
         queue.enqueue(1);
-        assertTrue("Queue is not currently empty", queue.isEmpty());
+        assertFalse("Queue is not currently empty", queue.isEmpty());
     }
 }
