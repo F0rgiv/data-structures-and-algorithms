@@ -9,7 +9,7 @@ public class MultiBracketValidationTest {
 
     @Test
     public void multiBracketValidation() {
-        String[] shouldBeTrue = {"{}", "{}(){}", "()[[Extra Characters]]", "(){}[[]]", "{}{Code}[Fellows](())", ""};
+        String[] shouldBeTrue = {"{}", "{}(){}", "()[[Extra Characters]]", "(){}[[]]", "{}{Code}[Fellows](())", "", "({[]})"};
         String[] shouldBeFalse = {"[({}]", "(](", "{(})" };
 
         for (String string: shouldBeTrue) {
