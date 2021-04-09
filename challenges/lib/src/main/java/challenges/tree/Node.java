@@ -5,10 +5,8 @@ public class Node<T> {
     Node<T> right;
     Node<T> left;
 
-    Node(T input, Node<T> left, Node<T> right) {
+    Node(T input) {
         this.value = input;
-        this.right = right;
-        this.left = left;
     }
 
     @Override
