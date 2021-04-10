@@ -26,18 +26,12 @@ public class BinarySearchTreeTest {
         binarySearchTree1.add('n');
         binarySearchTree1.add('h');
 
-        List<Character> result = binarySearchTree1.breadthTraversal();
-        Character[] expected = {'h','f','n','c','g','j','p','a','d','i','k','m','l'};
-        assertArrayEquals(expected, result.toArray(new Character[result.size()]));
-        List<Character> result2 = binarySearchTree1.preOrder();
-        Character[] expected2 = {'h','f','c','a','d','g','n','j','i','k','m','l','p'};
-        assertArrayEquals(expected2, result2.toArray(new Character[result.size()]));
-        List<Character> result3 = binarySearchTree1.inOrder();
-        Character[] expected3 = {'a','c','d','f','g','h','i','j','k','l','m','n','p'};
-        assertArrayEquals(expected3, result3.toArray(new Character[result.size()]));
-        List<Character> result4 = binarySearchTree1.postOrder();
-        Character[] expected4 = {'a','d','c','g','f','i','l','m','k','j','p','n','h'};
-        assertArrayEquals(expected4, result4.toArray(new Character[result.size()]));
+        List<Character> result1 = binarySearchTree1.inOrder();
+        Character[] expected1 = {'a','c','d','f','g','h','i','j','k','l','m','n','p'};
+        assertArrayEquals(expected1, result1.toArray(new Character[result1.size()]));
+        List<Character> result2 = binarySearchTree1.breadthTraversal();
+        Character[] expected2 = {'a','d','c','g','f','i','h','l','k','m','j','p','n'};
+        assertArrayEquals(expected2, result2.toArray(new Character[result2.size()]));
 
         binarySearchTree2.add(1);
         binarySearchTree2.add(20);
@@ -45,6 +39,12 @@ public class BinarySearchTreeTest {
         binarySearchTree2.add(4);
         binarySearchTree2.add(5);
         binarySearchTree2.add(0);
+        List<Integer> result3 = binarySearchTree2.inOrder();
+        Character[] expected3 = {0,1,3,4,5,20};
+        assertArrayEquals(expected3, result3.toArray(new Integer[result3.size()]));
+        List<Integer> result4 = binarySearchTree2.breadthTraversal();
+        Character[] expected4 = {1,0,20,3,4,5};
+        assertArrayEquals(expected4, result4.toArray(new Integer[result4.size()]));
     }
 
     @Test
