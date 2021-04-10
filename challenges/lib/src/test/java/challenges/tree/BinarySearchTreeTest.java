@@ -27,10 +27,10 @@ public class BinarySearchTreeTest {
         binarySearchTree1.add('h');
 
         List<Character> result1 = binarySearchTree1.inOrder();
-        Character[] expected1 = {'a','c','d','f','g','h','i','j','k','l','m','n','p'};
+        Character[] expected1 = {'a', 'c', 'd', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p'};
         assertArrayEquals(expected1, result1.toArray(new Character[result1.size()]));
         List<Character> result2 = binarySearchTree1.breadthTraversal();
-        Character[] expected2 = {'a','d','c','g','f','i','h','l','k','m','j','p','n'};
+        Character[] expected2 = {'a', 'd', 'c', 'g', 'f', 'i', 'h', 'l', 'k', 'm', 'j', 'p', 'n'};
         assertArrayEquals(expected2, result2.toArray(new Character[result2.size()]));
 
         binarySearchTree2.add(1);
@@ -40,10 +40,10 @@ public class BinarySearchTreeTest {
         binarySearchTree2.add(5);
         binarySearchTree2.add(0);
         List<Integer> result3 = binarySearchTree2.inOrder();
-        Character[] expected3 = {0,1,3,4,5,20};
+        Character[] expected3 = {0, 1, 3, 4, 5, 20};
         assertArrayEquals(expected3, result3.toArray(new Integer[result3.size()]));
         List<Integer> result4 = binarySearchTree2.breadthTraversal();
-        Character[] expected4 = {1,0,20,3,4,5};
+        Character[] expected4 = {1, 0, 20, 3, 4, 5};
         assertArrayEquals(expected4, result4.toArray(new Integer[result4.size()]));
     }
 
