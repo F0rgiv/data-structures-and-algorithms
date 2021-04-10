@@ -40,10 +40,10 @@ public class BinarySearchTreeTest {
         binarySearchTree2.add(5);
         binarySearchTree2.add(0);
         List<Integer> result3 = binarySearchTree2.inOrder();
-        Character[] expected3 = {0, 1, 3, 4, 5, 20};
+        Integer[] expected3 = {0, 1, 3, 4, 5, 20};
         assertArrayEquals(expected3, result3.toArray(new Integer[result3.size()]));
         List<Integer> result4 = binarySearchTree2.breadthTraversal();
-        Character[] expected4 = {1, 0, 20, 3, 4, 5};
+        Integer[] expected4 = {1, 0, 20, 3, 4, 5};
         assertArrayEquals(expected4, result4.toArray(new Integer[result4.size()]));
     }
 
