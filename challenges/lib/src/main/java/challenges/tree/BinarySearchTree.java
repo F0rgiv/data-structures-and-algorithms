@@ -1,5 +1,7 @@
 package challenges.tree;
 
+import challenges.stacksandqueues.Queue;
+
 public class BinarySearchTree<T extends Comparable<T>> extends Tree<T> {
     public void add(T value) {
         if (this.root == null) {
@@ -36,5 +38,13 @@ public class BinarySearchTree<T extends Comparable<T>> extends Tree<T> {
             node = node.left;
         }
         return false;
+    }
+
+    @Override
+    public T findMaximumValue() {
+        if (this.root == null) return null;
+        Node<T> current = this.root;
+        while (current.right != null) current = current.right;
+        return current.value;
     }
 }
