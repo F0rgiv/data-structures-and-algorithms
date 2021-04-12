@@ -40,29 +40,28 @@ public class Tree<T> {
     }
 
     public List<T> inOrder() {
-        return inOrder(this.root);
+        List<T> result = new LinkedList<>();
+        inOrder(this.root, result);
+        return result;
     }
 
-    private List<T> inOrder(Node<T> node) {
-        List<T> result = new LinkedList<>();
-        if (node == null) return result;
-        result = inOrder(node.left);
-        result.add(node.value);
-        result = Stream.concat(result.stream(), inOrder(node.right).stream()).collect(Collectors.toList());
-
-        return result;
+    private void inOrder(Node<T> node, List<T> list) {
+        if (node == null) return;
+        inOrder(node.left, list);
+        list.add(node.value);
+        inOrder(node.right, list);
     }
 
     public List<T> postOrder() {
-        return postOrder(this.root);
+        List<T> result = new LinkedList<>();
+        postOrder(this.root, result);
+        return result;
     }
 
-    private List<T> postOrder(Node<T> node) {
-        List<T> result = new LinkedList<>();
-        if (node == null) return result;
-        result = postOrder(node.left);
-        result = Stream.concat(result.stream(), postOrder(node.right).stream()).collect(Collectors.toList());
-        result.add(node.value);
-        return result;
+    private void postOrder(Node<T> node, List<T> list) {
+        if (node == null) return;
+        postOrder(node.left, list);
+        postOrder(node.right, list);
+        list.add(node.value);
     }
 }
