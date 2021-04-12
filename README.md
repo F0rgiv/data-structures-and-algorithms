@@ -13,4 +13,5 @@ See [setup instructions](https://codefellows.github.io/setup-guide/code-301/3-co
 - [pseudo queue](/challenges/readmes/pseudo-queue.md)
 - [Animal Shelter](/challenges/readmes/animal-shelter.md)
 - [Brackets](/challenges/readmes/multi-bracket-validation.md)
+- [Tree](/challenges/readmes/tree.md)
 
