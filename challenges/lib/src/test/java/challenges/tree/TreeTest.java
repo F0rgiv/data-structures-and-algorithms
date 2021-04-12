@@ -7,6 +7,9 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+/**
+ * Note that these methods are tested further with additional tree structures used in the BinarySearchTreeTest file.
+ */
 public class TreeTest {
     Tree<Character> tree = new Tree<>();
 
