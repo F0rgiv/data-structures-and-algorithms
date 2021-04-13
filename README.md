@@ -14,4 +14,5 @@ See [setup instructions](https://codefellows.github.io/setup-guide/code-301/3-co
 - [Animal Shelter](/challenges/readmes/animal-shelter.md)
 - [Brackets](/challenges/readmes/multi-bracket-validation.md)
 - [Tree](/challenges/readmes/tree.md)
+- [Tree Max](/challenges/readmes/tree-max.md)
 

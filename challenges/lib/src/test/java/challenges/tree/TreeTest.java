@@ -57,4 +57,16 @@ public class TreeTest {
         Character[] expected = {'a','d','c','g','f','i','l','m','k','j','p','n','h'};
         assertArrayEquals(expected, result.toArray(new Character[result.size()]));
     }
+
+    @Test
+    public void findMaximumValue() {
+        Character result = tree.findMaximumValue();
+        Character expected = 'p';
+        assertEquals(expected, result);
+
+        tree = new Tree<>();
+        result = tree.findMaximumValue();
+        expected = null;
+        assertEquals(expected, result);
+    }
 }

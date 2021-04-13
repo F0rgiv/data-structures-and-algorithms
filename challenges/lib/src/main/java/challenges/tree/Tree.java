@@ -5,10 +5,8 @@ import challenges.stacksandqueues.Stack;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class Tree<T> {
+public class Tree<T extends Comparable<T>> {
     Node<T> root;
 
     public List<T> breadthTraversal() {
@@ -63,5 +61,23 @@ public class Tree<T> {
         postOrder(node.left, list);
         postOrder(node.right, list);
         list.add(node.value);
+    }
+
+    public T findMaximumValue() {
+        Queue<Node<T>> queue = new Queue<>();
+        T result = null;
+
+        if (root != null) {
+            queue.enqueue(this.root);
+            result = this.root.value;
+        }
+
+        while (!queue.isEmpty()) {
+            Node<T> node = queue.dequeue();
+            if (node.value.compareTo(result) > 0) result = node.value;
+            if (node.left != null) queue.enqueue(node.left);
+            if (node.right != null) queue.enqueue(node.right);
+        }
+        return result;
     }
 }

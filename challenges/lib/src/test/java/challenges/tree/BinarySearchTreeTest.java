@@ -69,4 +69,21 @@ public class BinarySearchTreeTest {
         assertFalse(binarySearchTree2.contains(30));
         assertFalse(binarySearchTree2.contains(35));
     }
+
+    @Test
+    public void findMaximumValue() {
+        BinarySearchTree binarySearchTree0 = new BinarySearchTree();
+        assertNull(binarySearchTree0.findMaximumValue());
+
+        binarySearchTree1.add('a');
+        binarySearchTree1.add('b');
+        binarySearchTree1.add('c');
+        assertEquals('c', (char)binarySearchTree1.findMaximumValue());
+
+        binarySearchTree2.add(1);
+        binarySearchTree2.add(2);
+        binarySearchTree2.add(3);
+        assertEquals(3, (int)binarySearchTree2.findMaximumValue());
+
+    }
 }
