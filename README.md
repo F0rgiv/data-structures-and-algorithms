@@ -15,4 +15,4 @@ See [setup instructions](https://codefellows.github.io/setup-guide/code-301/3-co
 - [Brackets](/challenges/readmes/multi-bracket-validation.md)
 - [Tree](/challenges/readmes/tree.md)
 - [Tree Max](/challenges/readmes/tree-max.md)
-
+- [Tree, Breadth traversal](/challenges/readmes/tree.md)
