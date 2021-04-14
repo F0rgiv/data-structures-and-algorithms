@@ -84,6 +84,11 @@ This takes any value as an argument and adds it to the tree in to appropriate po
 Return a boolean letting you know if a specified value is within the tree.
 
 ---
+Collaborated with Ed on the below whiteboard.
+
+![Whiteboard](/assets/Breadth-first.PNG)
+
+---
 
 Collaborated with Ed, Christian and Amelia on the board:
 
