@@ -16,3 +16,4 @@ See [setup instructions](https://codefellows.github.io/setup-guide/code-301/3-co
 - [Tree](/challenges/readmes/tree.md)
 - [Tree Max](/challenges/readmes/tree-max.md)
 - [Tree, Breadth traversal](/challenges/readmes/tree.md)
+- [Tree, Fizz Buzz](/challenges/readmes/fizz-buzz-tree.md)

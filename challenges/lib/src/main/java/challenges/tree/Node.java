@@ -5,8 +5,14 @@ public class Node<T> {
     Node<T> right;
     Node<T> left;
 
-    Node(T input) {
+    public Node(T input) {
         this.value = input;
+    }
+
+    public Node(T value, Node<T> left, Node<T> right) {
+        this.value = value;
+        this.right = right;
+        this.left = left;
     }
 
     @Override
@@ -16,5 +22,17 @@ public class Node<T> {
                 ", left=" + left.value +
                 ", right=" + right.value +
                 '}';
+    }
+
+    public T getValue() {
+        return value;
+    }
+
+    public Node<T> getRight() {
+        return right;
+    }
+
+    public Node<T> getLeft() {
+        return left;
     }
 }
