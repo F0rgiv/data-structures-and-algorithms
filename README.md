@@ -3,6 +3,10 @@
 See [setup instructions](https://codefellows.github.io/setup-guide/code-301/3-code-challenges), in the Code 301 Setup Guide.
 
 ## Table of Contents
+
+### Blogs
+- [Insert Sort](/challenges/readmes/blog1.md)
+
 ### 401 Data Structures, Code Challenges
 
 - [ArrayReverse](/challenges/readmes/arrayReverce.md)
