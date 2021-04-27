@@ -6,6 +6,7 @@ See [setup instructions](https://codefellows.github.io/setup-guide/code-301/3-co
 
 ### Blogs
 - [Insert Sort](/challenges/readmes/blog1.md)
+- [Merge Sort](/challenges/readmes/blog2.md)
 
 ### 401 Data Structures, Code Challenges
 
