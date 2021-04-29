@@ -64,4 +64,37 @@ public class Sorts {
         }
         return result;
     }
+
+    public static int[] quickSort(int[] arr) {
+        quickSort(arr, 0, arr.length - 1);
+        return arr;
+    }
+
+    private static void quickSort(int[] arr, int left, int right) {
+        if (left < right) {
+            // Partition the array by setting the position of the pivot value
+            int position = partition(arr, left, right);
+            // Sort the left
+            quickSort(arr, left, position - 2);
+            // Sort the right
+            quickSort(arr, position, right);
+        }
+    }
+
+    public static int partition(int[] arr, int left, int right) {
+        // set a pivot value as a point of reference
+        int pivot = arr[right];
+        // create a variable to track the largest index of numbers lower than the defined pivot
+        int low = left;
+        for (int i = left; i <= right; i++) if (arr[i] <= pivot) swap(arr, i, low++);
+
+        // return the pivot index point
+        return low;
+    }
+
+    public static void swap(int[] arr, int i, int low) {
+        int temp = arr[i];
+        arr[i] = arr[low];
+        arr[low] = temp;
+    }
 }
