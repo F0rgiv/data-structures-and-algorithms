@@ -88,6 +88,7 @@ public class Sorts {
         int low = left;
         for (int i = left; i <= right; i++) if (arr[i] <= pivot) swap(arr, i, low++);
 
+
         // return the pivot index point
         return low;
     }
