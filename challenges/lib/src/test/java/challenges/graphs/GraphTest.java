@@ -28,7 +28,7 @@ public class GraphTest {
     }
 
     @Test
-    public void graphTest() {
+    public void graphTest() throws Exception {
         assertEquals(
                 "Graph{vertexes=[James, Matthew, Amelia, Ed], matrix=[[null, 5, 5, 5], [5, null, null, null], [5, null, null, null], [5, null, null, null]]}",
                 graph.toString()
