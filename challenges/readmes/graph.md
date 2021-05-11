@@ -19,6 +19,8 @@ Returns all of the nodes in the graph as a collection (set, list, or similar)
 Returns a collection of edges connected to the given node
 Takes in a given node
 Include the weight of the connection in the returned collection
+* getEdge()
+Takes in a list of vertexies and attempts to traverse them in that order. In the event that they are successfully traversed it retrun true and the cost or this. else it returns false and 0.      
 * Size()
 Returns the total number of nodes in the graph
 sed to store something otherwise it return false.

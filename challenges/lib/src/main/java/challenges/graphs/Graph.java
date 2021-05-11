@@ -92,6 +92,22 @@ public class Graph<V, E> {
         return result;
     }
 
+    public Map.Entry<Boolean, Integer> getEdge(List<V> path) throws Exception {
+        try {
+            int i = (int) GetEdge(path.get(0), path.get(1));
+        } catch (Exception e) {
+            throw new Exception("Unable to treat your Edge type as a class");
+        }
+        //check that Edge can be cast as type int else throw exception
+        int total = 0;
+        for (int i = 0; i < path.size() - 1; i++) {
+            E edge = GetEdge(path.get(i), path.get(i+1));
+            if (edge == null) return Map.entry(false, 0);
+            total = total + (int) edge;
+        }
+        return Map.entry(true, total);
+    }
+
     public int Size() {
         return vertexes.size();
     }
