@@ -38,12 +38,25 @@ public class GraphTest {
                 graph.Size()
         );
         assertEquals(
-                "{[Ed, James]=5}",
+                "[James]",
                 graph.GetNeighbors("Ed").toString()
         );
         assertEquals(
-                "{[Matthew, James]=5, [James, Amelia]=5, [Ed, James]=5, [James, Matthew]=5, [James, Ed]=5, [Amelia, James]=5}",
+                "[Amelia, Matthew, Ed]",
                 graph.GetNeighbors("James").toString()
+        );
+        assertEquals(
+                "{[Matthew, James]=5, [James, Amelia]=5, [Ed, James]=5, [James, Matthew]=5, [James, Ed]=5, [Amelia, James]=5}",
+                graph.GetNeighborsDetails("James").toString()
+        );
+        assertEquals(
+                "[James, Matthew, Amelia, Ed]",
+                graph.breadthFirst("James").toString()
+        );
+
+        assertEquals(
+                "[Ed, James, Matthew, Amelia]",
+                graph.breadthFirst("Ed").toString()
         );
     }
 }

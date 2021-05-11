@@ -36,8 +36,8 @@ public class Graph<V, E> {
         int index = vertexes.indexOf(vertex);
         Set<V> result = new HashSet<>();
         for (int i = 0; i < vertexes.size(); i++) {
-            if (matrix.get(index).get(i) == null) result.add(vertexes.get(i));
-            if (matrix.get(i).get(index) == null) result.add(vertexes.get(i));
+            if (matrix.get(index).get(i) != null) result.add(vertexes.get(i));
+            if (matrix.get(i).get(index) != null) result.add(vertexes.get(i));
         }
         return result;
     }
@@ -66,6 +66,30 @@ public class Graph<V, E> {
         int indexFrom = vertexes.indexOf(vertexFrom);
         int indexTo = vertexes.indexOf(vertexTo);
         return matrix.get(indexFrom).get(indexTo);
+    }
+
+    public List<V> breadthFirst(V vertex) {
+        List<V> result = new LinkedList<>();
+        Queue<V> toVisit = new LinkedList<>();
+        result.add(vertex);
+        toVisit.add(vertex);
+        while (!toVisit.isEmpty()) {
+            V current = toVisit.remove();
+            int index = vertexes.indexOf(current);
+            for (int i = 0; i < vertexes.size(); i++) {
+                if (matrix.get(index).get(i) != null
+                        && !(result.contains(vertexes.get(i)))) {
+                    result.add(vertexes.get(i));
+                    toVisit.add(vertexes.get(i));
+                }
+                if (matrix.get(i).get(index) != null
+                        && !(result.contains(vertexes.get(i)))) {
+                    result.add(vertexes.get(i));
+                    toVisit.add(vertexes.get(i));
+                }
+            }
+        }
+        return result;
     }
 
     public int Size() {
