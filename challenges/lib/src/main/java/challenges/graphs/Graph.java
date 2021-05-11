@@ -24,13 +24,25 @@ public class Graph<V, E> {
         int index2 = vertexes.indexOf(vertex2);
         matrix.get(index1).set(index2, edge);
         if (!directional) matrix.get(index2).set(index1, edge);
+
+//        vertexes.sort(Comparator.comparing());
     }
 
     public List<V> getVertexes() {
         return vertexes;
     }
 
-    public Map<List<V>, E> GetNeighbors(V vertex) {
+    public Set<V> GetNeighbors(V vertex) {
+        int index = vertexes.indexOf(vertex);
+        Set<V> result = new HashSet<>();
+        for (int i = 0; i < vertexes.size(); i++) {
+            if (matrix.get(index).get(i) == null) result.add(vertexes.get(i));
+            if (matrix.get(i).get(index) == null) result.add(vertexes.get(i));
+        }
+        return result;
+    }
+
+    public Map<List<V>, E> GetNeighborsDetails(V vertex) {
         int index = vertexes.indexOf(vertex);
         Map<List<V>, E> result = new HashMap<>();
         for (int i = 0; i < vertexes.size(); i++) {
@@ -48,6 +60,12 @@ public class Graph<V, E> {
             result.put(fromTo, matrix.get(index).get(i));
         }
         return result;
+    }
+
+    public E GetEdge(V vertexFrom, V vertexTo) {
+        int indexFrom = vertexes.indexOf(vertexFrom);
+        int indexTo = vertexes.indexOf(vertexTo);
+        return matrix.get(indexFrom).get(indexTo);
     }
 
     public int Size() {
