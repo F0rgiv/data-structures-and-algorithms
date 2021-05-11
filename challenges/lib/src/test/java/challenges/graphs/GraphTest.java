@@ -3,6 +3,10 @@ package challenges.graphs;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import static org.junit.Assert.*;
 
 public class GraphTest {
@@ -57,6 +61,19 @@ public class GraphTest {
         assertEquals(
                 "[Ed, James, Matthew, Amelia]",
                 graph.breadthFirst("Ed").toString()
+        );
+        List<String> result = new ArrayList<>();
+        result.add("Ed");
+        result.add("James");
+        result.add("Matthew");
+        assertEquals(
+                Map.entry(true, 10),
+                graph.getEdge(result)
+        );
+        result.add("Ed");
+        assertEquals(
+                Map.entry(false, 0),
+                graph.getEdge(result)
         );
     }
 }
