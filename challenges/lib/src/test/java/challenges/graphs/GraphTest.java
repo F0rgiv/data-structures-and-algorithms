@@ -50,7 +50,7 @@ public class GraphTest {
                 graph.GetNeighborsDetails("James").toString()
         );
         assertEquals(
-                "[James, Amelia, Matthew, Ed]",
+                "[James, Matthew, Amelia, Ed]",
                 graph.breadthFirst("James").toString()
         );
 

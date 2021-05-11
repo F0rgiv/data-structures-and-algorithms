@@ -71,22 +71,21 @@ public class Graph<V, E> {
     public List<V> breadthFirst(V vertex) {
         List<V> result = new LinkedList<>();
         Queue<V> toVisit = new LinkedList<>();
+        result.add(vertex);
         toVisit.add(vertex);
         while (!toVisit.isEmpty()) {
             V current = toVisit.remove();
             int index = vertexes.indexOf(current);
             for (int i = 0; i < vertexes.size(); i++) {
                 if (matrix.get(index).get(i) != null
-                        && !(result.contains(matrix.get(index).get(i)))) {
+                        && !(result.contains(vertexes.get(i)))) {
                     result.add(vertexes.get(i));
                     toVisit.add(vertexes.get(i));
                 }
-                if (matrix.get(i).get(index) != null) {
-                    if (!result.contains(matrix.get(i).get(index))){
-
-                        result.add(vertexes.get(i));
-                        toVisit.add(vertexes.get(i));
-                    }
+                if (matrix.get(i).get(index) != null
+                        && !(result.contains(vertexes.get(i)))) {
+                    result.add(vertexes.get(i));
+                    toVisit.add(vertexes.get(i));
                 }
             }
         }
