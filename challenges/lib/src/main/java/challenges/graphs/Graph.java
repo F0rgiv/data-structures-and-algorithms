@@ -92,6 +92,30 @@ public class Graph<V, E> {
         return result;
     }
 
+    public List<V> depthFirst(V vertex) {
+        List<V> result = new LinkedList<>();
+        Stack<V> toVisit = new Stack<>();
+        toVisit.add(vertex);
+        while (!toVisit.isEmpty()) {
+            V current = toVisit.pop();
+            result.add(current);
+            int index = vertexes.indexOf(current);
+            for (int i = 0; i < vertexes.size(); i++) {
+                if (matrix.get(index).get(i) != null
+                        && !(result.contains(vertexes.get(i)))
+                        && !(toVisit.contains(vertexes.get(i)))) {
+                    toVisit.add(vertexes.get(i));
+                }
+                if (matrix.get(i).get(index) != null
+                        && !(result.contains(vertexes.get(i)))
+                        && !(toVisit.contains(vertexes.get(i)))) {
+                    toVisit.add(vertexes.get(i));
+                }
+            }
+        }
+        return result;
+    }
+
     public Map.Entry<Boolean, Integer> getEdge(List<V> path) throws Exception {
         try {
             int i = (int) GetEdge(path.get(0), path.get(1));
