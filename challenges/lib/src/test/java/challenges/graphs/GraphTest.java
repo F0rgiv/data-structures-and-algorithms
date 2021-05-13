@@ -75,5 +75,17 @@ public class GraphTest {
                 Map.entry(false, 0),
                 graph.getEdge(result)
         );
+
+        assertEquals(
+                "[Ed, James, Amelia, Matthew]",
+                graph.depthFirst("Ed").toString()
+        );
+        graph.addVertex("Lindsey");
+        graph.addEdge(50,"Lindsey", "Amelia", false);
+        graph.addEdge(50,"Ed", "Lindsey", false);
+        assertEquals(
+                "[Ed, Lindsey, Amelia, James, Matthew]",
+                graph.depthFirst("Ed").toString()
+        );
     }
 }
