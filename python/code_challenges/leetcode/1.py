@@ -20,11 +20,10 @@ class Solution:
             i += 1
         return 'none found'
 
-
-
     # https://leetcode.com/problems/longest-common-prefix/solution/
     # Write a function to find the longest common prefix string amongst an array of strings.
     # If there is no common prefix, return an empty string "".
+
     def getLongestPrefix(words):
         words = words.sort()
         result = ''
