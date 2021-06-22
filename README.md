@@ -2,14 +2,23 @@
 
 See [setup instructions](https://codefellows.github.io/setup-guide/code-301/3-code-challenges), in the Code 301 Setup Guide.
 
-## Repository Quick Tour and Usage
+## Table of Contents
 
-### 301 Code Challenges
-
-Under the `data-structures-and-algorithms` repository, at the top level is a folder called `code-challenges`
-
-Each day, you'll add one new file to this folder to do your work for the day's assigned code challenge
+### Blogs
+- [Insert Sort](/challenges/readmes/blog1.md)
+- [Merge Sort](/challenges/readmes/blog2.md)
 
 ### 401 Data Structures, Code Challenges
 
-- Please follow the instructions specific to your 401 language, which can be found in the directory below, matching your course.
+- [ArrayReverse](/challenges/readmes/arrayReverce.md)
+- [ArrayShift](/challenges/readmes/ArrayShift.md)
+- [binarySearch](/challenges/readmes/binarySearch.md)
+- [linkedList](/challenges/readmes/linkedList.md)
+- [stacks and queues](/challenges/readmes/stacksandqueues.md)
+- [pseudo queue](/challenges/readmes/pseudo-queue.md)
+- [Animal Shelter](/challenges/readmes/animal-shelter.md)
+- [Brackets](/challenges/readmes/multi-bracket-validation.md)
+- [Tree](/challenges/readmes/tree.md)
+- [Tree Max](/challenges/readmes/tree-max.md)
+- [Tree, Breadth traversal](/challenges/readmes/tree.md)
+- [Tree, Fizz Buzz](/challenges/readmes/fizz-buzz-tree.md)
