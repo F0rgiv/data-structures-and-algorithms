@@ -42,7 +42,7 @@ class Solution:
     # https://leetcode.com/problems/running-sum-of-1d-array/solution/
     def runningSum(self, nums: List[int]) -> List[int]:
         tmp = 0
-        result = []
+        result = [] * len(nums)
         for num in nums:
             tmp = tmp+num
             result.append(tmp)
