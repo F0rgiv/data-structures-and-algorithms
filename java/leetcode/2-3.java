@@ -159,17 +159,16 @@ class Solution {
  * Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
  * The overall run time complexity should be O(log (m+n)).
  */
-
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         //handle empty lists
         if (nums1.length== 0) {
-            if (nums2.length % 2 == 0) return nums2[nums2.length/2];
-            return (nums2[nums2.length / 2] + nums2[(nums2.length/2) + 1]) / 2;
+            if (nums2.length % 2 == 0) return (double)(nums2[nums2.length / 2] + nums2[(nums2.length/2) - 1]) / 2;
+            return nums2[nums2.length/2];
         }
         if (nums2.length == 0) {
-            if (nums1.length % 2 == 0) return nums1[nums1.length/2];
-            return (nums1[nums1.length / 2] + nums1[(nums1.length/2) + 1]) / 2;
+            if (nums1.length % 2 == 0) return (double)(nums1[nums1.length / 2] + nums1[(nums1.length/2) - 1]) / 2;
+            return nums1[nums1.length/2]; 
         }
         //ensure we are partioning the smaller list.
         int[] smaller;
@@ -201,13 +200,15 @@ class Solution {
             middle = (left + right) / 2;
             cut = half - middle;
             
+            System.out.printf("%d %d", middle, cut);
+            
             //check that the cut isn't to far to the left
             if (smaller[middle] < larger[cut -1]){
                 //if end off array is reached return
                 if (middle == smaller.length -1){
                     if (even){
-                        if (cut == 1) return (larger[0] + smaller[middle]) /2;
-                        return (larger[cut -1] + larger[cut -2])/2;
+                        if (cut == 1) return (double)(larger[0] + smaller[middle]) /2;
+                        return (double)(larger[cut -1] + larger[cut -2])/2;
                     }
                     return Math.max(larger[cut-1], smaller[middle]);
                 }
@@ -219,11 +220,12 @@ class Solution {
             
             //check that we haven't reached the begining of the array
             if (middle == 0){
+                System.out.println("middle is 0");
                 if (even){
-                    if (cut == larger.length) return (larger[larger.length] + smaller[0]) /2;
-                    return (larger[cut] + larger[cut+1])/2;
+                    if (cut == larger.length) return (double)(larger[cut-1] + smaller[0]) /2;
+                    return (double)(larger[cut] + larger[cut+1])/2;
                 }
-                return larger[cut];
+                return Math.min(larger[cut], smaller[middle]);
             }
             
             //confirm we aren't too far to the right.
@@ -232,10 +234,12 @@ class Solution {
                 continuing = true;
             }
         }
+        System.out.println("found partition");
         if (even){
+            System.out.println("in normal");
             int leftMean = Math.max(smaller[middle-1], larger[cut-1]);
-            int rightMean = Math.max(smaller[middle], larger[cut]);
-            return (rightMean + leftMean)/2;
+            int rightMean = Math.min(smaller[middle], larger[cut]);
+            return (double)(rightMean + leftMean)/2;
         }
         return Math.min(smaller[middle], larger[cut]);
     }
