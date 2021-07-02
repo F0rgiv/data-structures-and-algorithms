@@ -170,6 +170,7 @@ class Solution {
             if (nums1.length % 2 == 0) return (double)(nums1[nums1.length / 2] + nums1[(nums1.length/2) - 1]) / 2;
             return nums1[nums1.length/2]; 
         }
+        if (nums1.length == 1 && nums2.length ==1) return (double)(nums1[0] + nums2[0])/2;
         //ensure we are partioning the smaller list.
         int[] smaller;
         int[] larger;
