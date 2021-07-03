@@ -209,7 +209,7 @@ class Solution {
                 if (middle == smaller.length -1){
                     if (even){
                         if (cut == 1) return (double)(larger[0] + smaller[middle]) /2;
-                        return (double)(larger[cut -1] + larger[cut -2])/2;
+                        return (double)(larger[cut -1] + Math.max(larger[cut -2], smaller[middle]))/2;
                     }
                     return Math.max(larger[cut-1], smaller[middle]);
                 }
@@ -224,13 +224,16 @@ class Solution {
                 System.out.println("middle is 0");
                 if (even){
                     if (cut == larger.length) return (double)(larger[cut-1] + smaller[0]) /2;
+                    if (cut == larger.length - 1) return (double)(larger[cut-1] + Math.min(smaller[0], larger[cut])) /2;
+                    if (larger[cut] > smaller[0]) return (double)(larger[cut-1] + Math.max(larger[cut-2], smaller[0]))/2;
+                    if (larger[cut] < smaller[0]) return (double)(larger[cut] + larger[cut-1])/2;
                     return (double)(larger[cut] + larger[cut+1])/2;
                 }
                 return Math.min(larger[cut], smaller[middle]);
             }
             
             //confirm we aren't too far to the right.
-            if (middle-1 > cut){
+            if (smaller[middle-1] > larger[cut]){
                 right = middle;
                 continuing = true;
             }
@@ -242,6 +245,32 @@ class Solution {
             int rightMean = Math.min(smaller[middle], larger[cut]);
             return (double)(rightMean + leftMean)/2;
         }
-        return Math.min(smaller[middle], larger[cut]);
+        if (smaller[middle] < larger[cut]) return smaller[middle];
+        return Math.max(smaller[middle-1], larger[cut]);
     }
 }
+
+
+class Solution {
+    public:
+        string convert(string s, int numRows) {
+            char[][] allChars = new char[numRows][s.legth/numRows * 2];
+            int charIndex = 0;
+            int charArrayIdex = 0;
+            for (char c : s){
+                allChars[charArrayIdex][charIndex] = c;
+                charArrayIdex++;
+                if (charArrayIdex == allChars.length){
+                    charArrayIdex = 0;
+                    charIndex++;
+                }
+            }
+            char[] result = char[s.length];
+            int current = 0;
+            for (int i = 0; i < allChars.length; i++){
+                int j = 0;
+                while(allChars[j] != null) {result[current] = allChars[j];}
+            }
+            return new String(result);
+        }
+    };
