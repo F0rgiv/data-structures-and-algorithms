@@ -251,26 +251,78 @@ class Solution {
 }
 
 
+// https://leetcode.com/problems/zigzag-conversion/
 class Solution {
-    public:
-        string convert(string s, int numRows) {
-            char[][] allChars = new char[numRows][s.legth/numRows * 2];
-            int charIndex = 0;
-            int charArrayIdex = 0;
-            for (char c : s){
-                allChars[charArrayIdex][charIndex] = c;
-                charArrayIdex++;
-                if (charArrayIdex == allChars.length){
-                    charArrayIdex = 0;
-                    charIndex++;
-                }
+    public String convert(String s, int numRows) {
+        
+        if (s.length() == 1 || numRows == 1) return s;
+        
+        char[][] rows = new char[numRows][s.length()];
+        
+        int charIndex = 0;
+        int row = 0;
+        boolean down = true;
+        for (int i = 0; i < s.length(); i++){
+            rows[row][charIndex] = s.charAt(i);            
+            //move down or up aplicably
+            if (down)row++;
+            else row--;
+            
+            if (row == rows.length-1){
+                down = false;
+                charIndex++;
             }
-            char[] result = char[s.length];
-            int current = 0;
-            for (int i = 0; i < allChars.length; i++){
-                int j = 0;
-                while(allChars[j] != null) {result[current] = allChars[j];}
+            if (row == 0){
+                down = true;
+                charIndex++;
             }
-            return new String(result);
         }
-    };
+        char[] result = new char[s.length()];
+        int current = 0;
+        for (int i = 0; i < rows.length; i++){
+            int j = 0;
+            while(j < rows[0].length) {
+                if (rows[i][j] == 0) {
+                    j++;
+                    continue;
+                }
+                result[current] =rows[i][j];
+                j++;
+                current++;
+            }
+        }
+        return new String(result);
+    }
+}
+
+
+/**
+ * https://leetcode.com/problems/reverse-integer/submissions/
+ * Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
+ * Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
+ */
+class Solution {
+    public int reverse(int x) {
+        int result = 0;
+        //convirst to posetive
+        boolean negative = false;
+        if (x < 0){
+            x = Math.abs(x);
+            negative = true;
+        }
+        
+        //reverse ints
+        while (x > 0){
+            //pop
+            int newInt = x % 10;
+            x = x /10;
+            
+            //check for overflow and return if needed
+            if (Integer.MAX_VALUE/10 < result || Integer.MAX_VALUE/10 == result && newInt > 7) return 0;
+            
+            result = result * 10 + newInt;
+        }
+        if (negative) return 0 - result;
+        return result;
+    }
+}
