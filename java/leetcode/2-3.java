@@ -370,6 +370,7 @@ class Solution {
     }
 
     public boolean isPalindrome2(int x) {
+        // takenb from https://leetcode.com/problems/palindrome-number/
         // Special cases:
         // As discussed above, when x < 0, x is not a palindrome.
         // Also if the last digit of the number is 0, in order to be a palindrome,
@@ -390,5 +391,35 @@ class Solution {
         // since the middle digit doesn't matter in palidrome(it will always equal to itself), we can simply get rid of it.
         return x == revertedNumber || x == revertedNumber/10;
     }
+}
+
+
+
+/**
+ * https://leetcode.com/problems/remove-nth-node-from-end-of-list/solution/
+ * Given the head of a linked list, remove the nth node from the end of the list and return its head.
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        if (_removeNthFromEnd(head, n) == 0) return head.next;
+        return head;
+    }
+    
+    private int _removeNthFromEnd(ListNode node, int n){
+        if (n == -1) return n;
+        if (node == null) return n;
+        n = _removeNthFromEnd(node.next, n);
+        
+        //remove node when nth is found
+        if (n == 0) node.next = node.next.next;
+        return n-1;
     }
 }
