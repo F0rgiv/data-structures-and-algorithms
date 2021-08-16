@@ -72,3 +72,52 @@ function calculateLand(x,y, grid){
     //left
     if (x > 0 && grid[x-1][y] == 1) calculateLand(x-1 ,y, grid);
 }
+
+/**
+ * @param {number[]} values
+ * @param {number[]} labels
+ * @param {number} numWanted
+ * @param {number} useLimit
+ * @return {number}
+ https://leetcode.com/problems/largest-values-from-labels/submissions/
+ */
+ var largestValsFromLabels = function(values, labels, numWanted, useLimit) {
+    //sort by value
+    sortTwoArraysByOnlyOne(values, labels);
+    
+    //create map of seen lablels
+    const seenLabels = new Map();
+    
+    //sum up the result.
+    let result = 0;
+    for (let i = 0; i < values.length && numWanted > 0; i++){
+        //ensure this label can be used again and add it if not yet used
+        if (!seenLabels.has(labels[i])) seenLabels.set(labels[i], 0);
+        if (seenLabels.get(labels[i]) == useLimit) continue;
+        
+        // do the thing.
+        result += values[i];
+        numWanted--;
+        seenLabels.set(labels[i], seenLabels.get(labels[i])+1)
+    }
+    return result;
+};
+
+function sortTwoArraysByOnlyOne(arr1, arr2){    
+ for(var i = 0; i < arr1.length; i++){
+   for(var j = 0; j < ( arr1.length - i -1 ); j++){
+     // Checking if the item at present iteration 
+     // is greater than the next iteration
+     if(arr1[j] < arr1[j+1]){
+         
+        // If the condition is true then swap them in both arrays
+        var temp = arr1[j]
+        arr1[j] = arr1[j + 1]
+        arr1[j+1] = temp
+        var temp = arr2[j]
+        arr2[j] = arr2[j + 1]
+        arr2[j+1] = temp
+     }
+   }
+ }
+}
