@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution:
     # https://leetcode.com/problems/two-sum/
     # Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -46,3 +48,51 @@ class Solution:
             tmp = tmp+num
             result.append(tmp)
         return result
+
+
+    # https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+    def findMin(nums: List[int]) -> int:
+        # perform search for lowest
+        left: int = 0
+        right: int = len(nums) - 1
+        check: int = 0
+        while check < len(nums) - 1:
+            check = (int)(left + right / 2)
+            if check == right:
+                break
+            if nums[check] > nums[check + 1]:
+                return nums[check + 1]
+            if nums[check] > nums[right]:
+                right = check + 1
+            else:
+                left = check
+        return nums[0]
+
+
+    # https://leetcode.com/problems/island-perimeter/
+    def islandPerimeter(self, grid: List[List[int]]) -> int:
+        solution = 0
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                solution += self.getEdges(grid, i, j)
+        return solution
+    
+    def getEdges(self, grid, i, j):
+        solution = 0
+        if grid[i][j] == 0:
+             return solution
+        if i-1 < 0 or grid[i-1][j] == 0:
+            solution += 1
+        if j-1 < 0 or grid[i][j-1] == 0:
+            solution += 1
+        if i+1 == len(grid) or grid[i+1][j] == 0:
+            solution += 1
+        if j+1 == len(grid[0]) or grid[i][j+1] == 0:
+            solution += 1
+        return solution
+
+
+s = Solution
+print(s.findMin(nums=[11,13,15,17]))
+print(s.findMin(nums=[2,1]))
+
